@@ -4,17 +4,21 @@ import Navigation from "../functions/Navigation";
 import "../CssPages/Order.css";
 
 //image imports section
-import burger from '../images/foodFolder/burger.jpg';
-import doubleBurger from '../images/foodFolder/DB.jpg';
+import Burger from '../images/foodFolder/burger.jpg';
+import doubleBurger from '../images/foodFolder/DB.webp';
 import chickenBurger from '../images/foodFolder/CB.webp';
 import doubleChickenBurger from '../images/foodFolder/doubleCB.jpg';
-import fries from '../images/foodFolder/fries.webp';
-import onionRings from '../images/foodFolder/rings.webp';
+import GSDDB from '../images/foodFolder/GSDDB.png';
+import fries from '../images/foodFolder/fries.jpg';
+import onionRings from '../images/foodFolder/rings.jpg';
 import nuggets from '../images/foodFolder/nuggets.jpg';
 import fingers from '../images/foodFolder/fingers.jpg';
-import water from '../images/foodFolder/water.png';
-import pop from '../images/foodFolder/soda.jpg';
-import milkshake from '../images/foodFolder/milkshake.jpg';
+import springRolls from '../images/foodFolder/springrolls.jpg';
+import water from '../images/foodFolder/water.webp';
+import cola from '../images/foodFolder/cola.jpg';
+import spright from '../images/foodFolder/spright.webp';
+import fanta from '../images/foodFolder/fanta.webp';
+import milkshake from '../images/foodFolder/milkshake.jpeg';
 
 //cart button creation
 function CartButton() {
@@ -37,23 +41,28 @@ function Order({ addItem, setCostArray, setCost }) {
     const [timerTriggerText, setTimerTriggerText] = useState(true); //display text for a set amount of time
     const [rememberItem, setRememberItem] = useState(-1);//this remembers the index, not the actual item
     const [selectedToppings, setSelectedToppings] = useState([]); //remembers the toppings 
-    const [toppingsCost, setToppingsCost] = useState(0);
+    const [toppingsCost, setToppingsCost] = useState(0); //remembers how many toppings are on the burger
+    
     //menu related const
     const menuItems = [ 
-        {name: "Burger", price: 4.59, image: burger},
-        {name: "Chicken Burger", price: 4.89, image: doubleBurger},
-        {name: "Double Burger", price: 8.59, image: chickenBurger},
+        {name: "Burger", price: 4.59, image: Burger},
+        {name: "Double Burger", price: 4.89, image: doubleBurger},
+        {name: "Chicken Burger", price: 8.59, image: chickenBurger},
         {name: "Double Chicken Burger", price: 4.89, image: doubleChickenBurger},
+        {name: "Ghostly Spicy Double Dare Burger", price: 6.99, image: GSDDB},
         {name: "Fries", price: 3.39, image: fries},
         {name: "Onion Rings", price: 3.99, image: onionRings},
         {name: "Chicken Nuggets", price: 2.99, image: nuggets},
         {name: "Chicken Fingers", price: 5.99, image: fingers},
+        {name: "Spring Rolls", price: 3.99, image: springRolls},
         {name: "Water", price: 0.99, image: water},
-        {name: "Pop", price: 3.99, image: pop},
+        {name: "Coca Cola", price: 2.99, image: cola},
+        {name: "Sprite", price: 2.99, image: spright},
+        {name: "Fanta", price: 2.99, image: fanta},
         {name: "Milkshake", price: 3.99, image: milkshake}
     ];
 
-    const menuToppings = ["Lettuce", "Tomato", "Cheese"];
+    const menuToppings = ["Lettuce", "Tomato", "Cheese", "Pickles", "Ketchup", "Mayo", "Mustard"];
 
     //for all side options and drinks
     const sizeItems = ["small", "medium", "large"];
@@ -67,9 +76,9 @@ function Order({ addItem, setCostArray, setCost }) {
       if (index !== -1) {
           setRememberItem(index); 
   
-          //0 - 3; to toppings (since thoses are all burgers
-          //4+ is all size related
-          if (index < 4) {
+          //0 - 4; to toppings (since thoses are all burgers)
+          //5+ is all size related
+          if (index < 6) {
               setCurrentState("toppings");
           } else if (index >= 4) {
               setCurrentState("size");
@@ -81,7 +90,7 @@ function Order({ addItem, setCostArray, setCost }) {
       }
   };
   
-  //items which have a size dependency
+  //items which have a size dependency (being non-burger items)
     const sizeAdd = (sizeIndex) => {
         if (rememberItem !== -1) {
             const itemName = menuItems[rememberItem]?.name;
@@ -107,7 +116,7 @@ function Order({ addItem, setCostArray, setCost }) {
         }
     }
 
-    //user is allowed to click as many toppings as they want
+    //user is allowed to click as many toppings as they want (and de-select as they choose) they pay 0.5 for each topping
     const toppingsAdd = (toppingIndex, isChecked) => {
         const toppingName = menuToppings[toppingIndex];
         const toppingCost = 0.5; 
@@ -216,11 +225,13 @@ const MenuView = ({ menuItems, functionIntentionalAdd }) => {
                 {menuItems.map((item, index) => (
                     <div key={index}>
                         <img src={item.image} alt={item.name} />
-                        <h5>{item.name}</h5>
-                        <p>${item.price.toFixed(2)}</p>
-                        <button onClick={() => functionIntentionalAdd(item.name)}>
-                            Add to Order
-                        </button>
+                        <div>
+                            <h5>{item.name}</h5>
+                            <p>${item.price.toFixed(2)}</p>
+                            <button onClick={() => functionIntentionalAdd(item.name)}>
+                                Add to Order
+                            </button>
+                        </div>
                     </div>
                 ))}
             </div>

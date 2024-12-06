@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Routes, Link, useLocation, useNavigate } from 'react-router-dom';
 import Navigation from '../functions/Navigation';
-
-const CostWillBeZero = ({setCost, cost}) => {
-    useEffect(() => {
-        if (cost === null) {
-            setCost(0);
-        }
-    }, [setCost]);
-    return ( null );
-}
+import '../CssPages/Cart.css';
 
 function Cart ({items = [], removeItem, removeAll, setCostArray, costArray, setCost, cost}) {
     //if it's in-person deliver or online
@@ -18,40 +10,49 @@ function Cart ({items = [], removeItem, removeAll, setCostArray, costArray, setC
     const [typeOrder, setTypeOrder] = useState("");
     const [deliTime, setDeliTime] = useState(0);
     const [typePay, setTypePay] = useState("");
+    const [triggerDeli, setTriggerDeli] = useState(false);
+    const [triggerPayment, setTriggerPayment] = useState(false);
 
     //delivery types
     const homeDeliButton = () => {
         setTypeOrder("Drop-Off Delivery");
         setDeliTime(20 + (items.length * 3) );
+        setTriggerDeli(true);
     }
 
     const inPersonDeliButton = () => {
         setTypeOrder("In-Person Delivery");
         setDeliTime((items.length * 3));
+        setTriggerDeli(true);
     }
 
     //Payment type
     const masterCardButton = () => {
         setTypePay("Master Card")
+        setTriggerPayment(true);
     }
     
     const visaButton = () => {
         setTypePay("Visa")
+        setTriggerPayment(true);
     }
     
     const paypalButton = () => {
         setTypePay("Paypal")
+        setTriggerPayment(true);
     }
 
     //'reset' button basically
+    //must have a payment type and delivery type to be set to true to active (this is done in the html code) 
     const purchaseButton = () => {
+        removeAll();
         setTypeOrder("");
         setTypePay("");
+        setTriggerPayment(false);
+        setTriggerDeli(false);
         setDeliTime(0);
-        removeAll();
-        setCostArray([]);
         setCost(0);   
-        CostWillBeZero();
+        setCostArray([]);
     }
 
     return (
@@ -76,14 +77,14 @@ function Cart ({items = [], removeItem, removeAll, setCostArray, costArray, setC
         </div>
 
         <div className='DeliveryType'>
-            <h2>Delivery</h2>
+            <h3>Delivery</h3>
             <button onClick={homeDeliButton}>Drop-Off Delivery</button>
             <button onClick={inPersonDeliButton}>In-Person Pick Up</button>
             {typeOrder === "" ? (
-                <h2>Delivery: </h2>
+                <h4>Delivery: </h4>
             ) : (
                 <div>
-                    <h2>Delivery: {typeOrder}</h2>
+                    <h4>Delivery: {typeOrder}</h4>
                     {typeOrder === "Drop-Off Delivery" ? (
                         <div>
                             <p>Estimated Delivery Time: {deliTime} minutes</p>
@@ -127,7 +128,7 @@ function Cart ({items = [], removeItem, removeAll, setCostArray, costArray, setC
         </div>
         
         <div className='purchase'>
-            <button onClick={purchaseButton}>Purchase</button>
+            <button onClick={purchaseButton} disabled={!triggerPayment || !triggerDeli } >Purchase</button>
         </div>
     </div>
     );

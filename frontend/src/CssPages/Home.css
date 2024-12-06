@@ -22,7 +22,7 @@ main {
     justify-content: space-around;
     margin: 20px auto;
     padding: 10px;
-    max-width: 500px;
+    max-width: 1000px;
     background: white;
     border: 1px solid white;
     border-radius: 8px;
@@ -38,15 +38,26 @@ main {
     display: block;
 }
 
+.ImageSection {
+    margin: 20px auto;
+    padding: 2px;
+    max-width: 1000px;
+    background: white;
+    border: 1px solid white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px black; 
+}
+
 .mainImages {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     gap: 20px;
     margin: 20px auto;
   }
 
 .imgContent {
     display: flex;
+    text-align: left;
     flex-direction: column;
     justify-content: center;
     margin-left: 20px;
@@ -60,7 +71,7 @@ main {
 
 .Imgdescription {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     gap: 50px;
     margin: 10px auto;
     font-size: 0.9rem;

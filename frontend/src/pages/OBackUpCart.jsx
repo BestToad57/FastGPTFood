@@ -233,5 +233,31 @@ const ToppingsView = ({ menuToppings, functionToppingsAdd, toppingsFinalPush }) 
         </div>
     );
 };
-// a second button appears there idk why 
+// a second button appears there idk why
+
+/*
+const MenuView = ({ menuItems, functionIntentionalAdd }) => {
+    return (
+        <div>
+            <h4>Menu</h4>
+            <p>Please select an item on the menu</p>
+            
+            <div className="menuSection">
+                {menuItems.map((item, index) => (
+                    <div key={index}>
+                        <img src={item.image} alt={item.name} />
+                        <div>
+                            <h5>{item.name}</h5>
+                            <p>${item.price.toFixed(2)}</p>
+                            <button onClick={() => functionIntentionalAdd(item.name)}>
+                                Add to Order
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+*/
 export default Order;

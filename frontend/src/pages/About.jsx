@@ -5,6 +5,10 @@ import CircleImg from '../images/CircleImg.png';
 import Navigation from '../functions/Navigation';
 import '../CssPages/About.css';
 
+//images
+import missionsBelief from '../images/aboutImages/missions.jpg';
+
+
 function About () {
     return (
         <div>
@@ -14,8 +18,8 @@ function About () {
 
             <main className='missionsBelief'>
                 <h2>Our Mission and Beliefs</h2>
-                <img src={TempImg} alt='our missions and belief' className='ourBeliefImg' />
-                <span>Something about these Beliefs</span>
+                <img src={missionsBelief} alt='our missions and belief' className='ourBeliefImg' />
+                <p>To craft unforgettable dining experiences where quality, flavor, and customer satisfaction are at the heart of every bite. We are committed to delivering delicious meals made with fresh ingredients, served with a smile, and creating a welcoming space for all.</p>
             </main>  
 
             <div className='founders'>

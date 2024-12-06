@@ -18,6 +18,10 @@ p {
     color: grey;
 }
 
+h1 {
+    margin: 100px 0px 0px 0px;
+}
+
 .leftSection {
     flex: 1;
 }

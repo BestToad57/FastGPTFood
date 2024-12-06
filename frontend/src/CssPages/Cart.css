@@ -6,12 +6,12 @@ body {
 }
 
 .ItemsInCart, .DeliveryType, .paymentCards, .costOverall, .purchase {
-    margin: 20px auto;
+    margin: 50px auto;
     max-width: 800px;
     background: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px black;
+    box-shadow: 0 2px 5px grey;
 }
 
 .ItemsInCart h2, .DeliveryType h2, .paymentCards h3, .costOverall p {
@@ -71,4 +71,9 @@ body {
     cursor: pointer;
     display: block;
     margin: 0 auto;
+}
+
+.purchase button:disabled {
+    background: rgb(153, 24, 24);
+    cursor: not-allowed;
 }
