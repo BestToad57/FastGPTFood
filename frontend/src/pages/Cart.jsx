@@ -13,7 +13,7 @@ function Cart ({items = [], removeItem, removeAll, setCostArray, costArray, setC
     const [triggerDeli, setTriggerDeli] = useState(false);
     const [triggerPayment, setTriggerPayment] = useState(false);
 
-    //delivery types
+    //delivey types
     const homeDeliButton = () => {
         setTypeOrder("Drop-Off Delivery");
         setDeliTime(20 + (items.length * 3) );
@@ -98,9 +98,9 @@ function Cart ({items = [], removeItem, removeAll, setCostArray, costArray, setC
                             <p>What store you picking up from</p>
                             <select onChange={(e) => console.log(e.target.value)}>
                                 <option value="">Please Select a Location</option>
-                                <option value="LocationA">The Moon</option>
-                                <option value="LocationB">The Deep Beyond</option>
-                                <option value="LocationC">My Death Bed</option>
+                                <option value="Location Moon">The Moon</option>
+                                <option value="Location The Deep Beyond">The Deep Beyond</option>
+                                <option value="Location 284 Progress Avn">284 Progress Avn</option>
                             </select>
                         </div>
                     )}

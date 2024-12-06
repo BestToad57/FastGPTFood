@@ -4,10 +4,12 @@ import { useState } from 'react'
 import './CssPages/App.css'
 import Home from './pages/Home';
 import Order from './pages/Order';
+import OrderHistory from './pages/OrderHistory';
 import About from './pages/About';
 import Cart from './pages/Cart';
 import Contact from './pages/Contact';
 import Navigation from './functions/Navigation';
+import Login from './pages/Login';
 
 //App is just getting routers up and loaded
 //Everything else will be done on their own pages or in the function folder
@@ -58,6 +60,8 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="/Cart" element={<Cart items={items} removeItem={removeItem} removeAll={removeAllItems} setCostArray={setCostArray} costArray={costArray} setCost={setCost} cost={cost} />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/OrderHistory" element={<OrderHistory />} />
       </Routes>
       </div>
     </Router>

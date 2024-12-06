@@ -8,6 +8,7 @@ body {
 .ItemsInCart, .DeliveryType, .paymentCards, .costOverall, .purchase {
     margin: 50px auto;
     max-width: 800px;
+    min-width: 350px;
     background: white;
     padding: 20px;
     border-radius: 8px;
