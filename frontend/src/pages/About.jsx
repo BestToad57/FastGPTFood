@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Routes, Link, useLocation, useNavigate } from 'react-router-dom';
-import TempImg from '../images/TempImg.png';
-import CircleImg from '../images/CircleImg.png';
 import Navigation from '../functions/Navigation';
 import '../CssPages/About.css';
 
 //images
 import missionsBelief from '../images/aboutImages/missions.jpg';
-
+import founder1 from '../images/aboutImages/BestToad57.png';
+import founder2 from '../images/aboutImages/UyphengChou.png';
+import founder3 from '../images/aboutImages/ishamotwani.png';
 
 function About () {
     return (
@@ -25,11 +25,13 @@ function About () {
             <div className='founders'>
                 <h2>Our Founders</h2>
                 <div className='foundersImages'>
-                    <img src={CircleImg} alt='image a' />
-                    <img src={CircleImg} alt='image b' />
-                    <img src={CircleImg} alt='image c' />
+                    <img src={founder1} />
+                    <img src={founder2} />
+                    <img src={founder3} />
                 </div>
-                <p>something something founders</p>
+                <p>
+                    Our core founders of BestToad57, UyphengChou and ishamotwani has created this the FastGPTFood company in high hopes to help change the world with it's high quality food and its world breaking technology. 
+                </p>
             </div>
         </div>
     );
