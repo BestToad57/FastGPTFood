@@ -27,13 +27,18 @@ function Navigation() {
         navigate('/Order');
     };
 
+    const loginButton = () => {
+        navigate('/Login');
+    };
+
     return (
         <div className="navi">
-            <button className='homeButton' onClick={homeButton}>Home</button>
-            <button className='aboutButton' onClick={aboutButton}>About</button>
-            <button className='contactButton' onClick={contactButton}>Contact</button>
-            <button className='orderButton' onClick={orderButton}>Order</button>
-            <button className='cartButton' onClick={cartButton}>Cart</button>
+            <button onClick={loginButton}>Login</button>
+            <button onClick={homeButton}>Home</button>
+            <button onClick={aboutButton}>About</button>
+            <button onClick={contactButton}>Contact</button>
+            <button onClick={orderButton}>Order</button>
+            <button  onClick={cartButton}>Cart</button>
         </div>
     );
 }

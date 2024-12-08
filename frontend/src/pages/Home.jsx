@@ -34,7 +34,6 @@ function Home() {
             <img src={GSDDB} alt='Special Meal' className='orderImg' />
             <div className='imgContent'>
               <p>Rejoice in the ultimate burger experience with our ghostly spicy double dare burger! Packing our prefectly season beef patty, with freshly cutted letture, juicy sliced tomatoes, and of course dipped with ghost peppers for that firey taste you know you'll love!</p>
-              <OrderButton />
             </div>
           </div>
 

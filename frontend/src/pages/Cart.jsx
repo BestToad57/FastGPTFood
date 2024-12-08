@@ -45,6 +45,16 @@ function Cart ({items = [], removeItem, removeAll, setCostArray, costArray, setC
     //'reset' button basically
     //must have a payment type and delivery type to be set to true to active (this is done in the html code) 
     const purchaseButton = () => {
+        //Order History
+        //stores the user cart (until the page refresh) and it will be called in the userPage to be showcase.
+        if(!localStorage.getItem('userCart')) {
+            localStorage.setItem('userCart', JSON.stringify(items))
+        } else {
+            const existingCart = JSON.parse(localStorage.getItem('userCart'));
+            const combinedCart = existingCart.concat(items);
+            localStorage.setItem('userCart', JSON.stringify(combinedCart));
+        }
+
         removeAll();
         setTypeOrder("");
         setTypePay("");
@@ -52,7 +62,7 @@ function Cart ({items = [], removeItem, removeAll, setCostArray, costArray, setC
         setTriggerDeli(false);
         setDeliTime(0);
         setCost(0);   
-        setCostArray([]);
+        setCostArray([]);        
     }
 
     return (

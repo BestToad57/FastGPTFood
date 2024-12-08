@@ -1,6 +1,9 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
+const loginSchema = new mongoose.Schema({
+    username: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+});
 
-const Login = 1;
-
-export default Login;
+export default mongoose.model('User', loginSchema);
