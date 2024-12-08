@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Routes, Link, useLocation, useNavigate } from 'react-router-dom';
 import '../CssPages/UserPage.css';
 
 const UserPage = () => {
-    //get userinformation from before
-    //this is all temp BTW i making a backend thing for this
-    const username = localStorage.getItem('username');
-    let recentPurchases = JSON.parse(localStorage.getItem('userCart'));
-    recentPurchases = Array.isArray(recentPurchases) ? recentPurchases : []; //checks if the array is empty or not sets it to blank if so; so the page doesn't break
+    const [username, setUsername] = useState(localStorage.getItem('username'));
+    let [recentPurchases, setRecentPurchases] = useState(JSON.parse(localStorage.getItem('userCart')) || []);
+    const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
+
     return (
         <div>
             <div className='BackgroundRegtangle'>
@@ -23,6 +23,9 @@ const UserPage = () => {
                     ) : (
                         <p>No recent purchases found.</p>
                     )}
+                </div>
+                <div className="actions">
+                    <button onClick={() => navigate("/")}>Logout</button>
                 </div>
             </div>
         </div>

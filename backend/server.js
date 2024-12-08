@@ -39,6 +39,8 @@ app.listen(PORT, () => {
   console.log(`Server is running on Port:${PORT}`);
 });
 
+//Starting Login Section
+
 //for login in
 //first: checks if the user is already in the database
 //second: hashes the password
@@ -90,5 +92,46 @@ app.post('/signup', async (req, res) => {
     } catch (error) {
         console.error('Error during signup:', error.message);
         res.status(500).json({message: 'Server error'});
+    }
+});
+
+//Starting... Order History
+
+//first: checks if the username or order is fullfilled
+//second: creates the new order assisting the username to the order
+app.post('/storeOrder', async (req, res) => {
+    try {
+        const {username, order} = req.body;
+
+        if (!order || order.length === 0) {
+            return res.status(400).json({message: 'An order is required'});
+        }
+
+        const user = await User.findOne({username});
+        if (!User) {
+            return res.status(404).json({message: 'Order does not have an associated order'})
+        }
+
+        const newOrder = new Order({
+            username,
+            item: order
+        });
+
+        await newOrder.save();
+        res.status(201).json({message: 'Order stored successfully', order: newOrder});
+
+    } catch (error) {
+        console.error('Error during order storage:', error.message);
+        res.status(500).json({message: 'Server error'}); 
+    }
+});
+
+//this just gets the order
+app.get('/getOrders/:username', (req, res) => {
+    const {username} = req.params;
+    if(orderDatabase[username]) {
+        return res.status(200).json({ orders: orderDatabase[username] });
+    } else {
+        return res.status(404).json({ message: 'No orders found for this user' });
     }
 });

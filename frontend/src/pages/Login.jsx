@@ -13,7 +13,7 @@ const Login = () => {
     const navigate = useNavigate();
     
     //can be either login / sign up
-    const [view, setView] = useState('Sign Up'); 
+    const [view, setView] = useState('login'); 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
