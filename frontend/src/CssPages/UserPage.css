@@ -7,3 +7,42 @@
     margin: 50px auto;
     text-align: center;
 }
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.recentPurchases {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.recentPurchases h3 {
+    font-size: 1.5em;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.recentPurchases p {
+    margin: 10px 0;
+    font-size: 1em;
+    color: #555;
+}
+
+.recentPurchases p:first-child {
+    margin-top: 0;
+}
+
+.recentPurchases p:last-child {
+    margin-bottom: 0;
+}
+
+.actions {
+    text-align: center;
+    margin-top: 20px;
+}

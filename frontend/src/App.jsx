@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import Navigation from './functions/Navigation';
 import Login from './pages/Login';
 import UserPage from './pages/UserPage';
+import {UserProvider} from './functions/userContext';
 
 //App is just getting routers up and loaded
 //Everything else will be done on their own pages or in the function folder
@@ -50,19 +51,25 @@ function App() {
     setItems([]);
   }
 
+  const [rememberUserName, setRememberUserName] = useState('');
+  const rememberUserNameFunction = (username) => {
+    setRememberUserName = username;
+  }
+
   return (
     <Router>
       <div>
-        <Navigation />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Order" element={<Order addItem={addItem} setCostArray={setCostArray} setCost={setCost}/>} />
-        <Route path="/About" element={<About />} />
-        <Route path="/Cart" element={<Cart items={items} removeItem={removeItem} removeAll={removeAllItems} setCostArray={setCostArray} costArray={costArray} setCost={setCost} cost={cost} />} />
-        <Route path="/Contact" element={<Contact />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/UserPage" element={<UserPage />} />
-      </Routes>
+        <UserProvider >
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Order" element={<Order addItem={addItem} setCostArray={setCostArray} setCost={setCost}/>} />
+            <Route path="/About" element={<About />} />
+            <Route path="/Cart" element={<Cart items={items} removeItem={removeItem} removeAll={removeAllItems} setCostArray={setCostArray} costArray={costArray} setCost={setCost} cost={cost} />} />
+            <Route path="/Contact" element={<Contact />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/UserPage" element={<UserPage />} />
+          </Routes>
+        </UserProvider >
       </div>
     </Router>
   )

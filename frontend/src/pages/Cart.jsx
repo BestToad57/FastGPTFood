@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Routes, Link, useLocation, useNavigate } from 'react-router-dom';
+import {useUser} from '../functions/userContext';
 import Navigation from '../functions/Navigation';
 import '../CssPages/Cart.css';
+import axios from "axios";
 
 function Cart ({items = [], removeItem, removeAll, setCostArray, costArray, setCost, cost}) {
     //if it's in-person deliver or online
@@ -12,6 +14,8 @@ function Cart ({items = [], removeItem, removeAll, setCostArray, costArray, setC
     const [typePay, setTypePay] = useState("");
     const [triggerDeli, setTriggerDeli] = useState(false);
     const [triggerPayment, setTriggerPayment] = useState(false);
+    const [error, setError] = useState(null);
+    const {username} = useUser();
 
     //delivey types
     const homeDeliButton = () => {
@@ -44,21 +48,44 @@ function Cart ({items = [], removeItem, removeAll, setCostArray, costArray, setC
 
     //'reset' button basically
     //must have a payment type and delivery type to be set to true to active (this is done in the html code) 
-    const purchaseButton = () => {
-        //Order History
-        //stores the user cart (until the page refresh) and it will be called in the userPage to be showcase:
-        const existingCart = JSON.parse(localStorage.getItem("userCart")) || [];
-        const combinedCart = existingCart.concat(items);
-        localStorage.setItem("userCart", JSON.stringify(combinedCart));
+    const purchaseButton = async () => {
+        try {
+            if (!username) {
+                alert("Your order has been successful!");
+                removeAll();
+                setTypeOrder("");
+                setTypePay("");
+                setTriggerPayment(false);
+                setTriggerDeli(false);
+                setDeliTime(0);
+                setCost(0);   
+                setCostArray([]); 
+                return;
+            }
 
-        removeAll();
-        setTypeOrder("");
-        setTypePay("");
-        setTriggerPayment(false);
-        setTriggerDeli(false);
-        setDeliTime(0);
-        setCost(0);   
-        setCostArray([]);        
+            console.log(username);
+
+            const response = await axios.post("http://localhost:5000/storeOrder", {
+                username,
+                items,
+                deliveryType: typeOrder,
+                paymentType: typePay,
+                totalCost: cost,
+            });
+            
+                alert("Your order has been successful!");
+                removeAll();
+                setTypeOrder("");
+                setTypePay("");
+                setTriggerPayment(false);
+                setTriggerDeli(false);
+                setDeliTime(0);
+                setCost(0);   
+                setCostArray([]);
+        } catch (error) {
+            console.error("Error completing purchase:", error);
+            setError("Failed to complete your purchase. Please try again.");
+        }
     }
 
     return (
@@ -102,7 +129,7 @@ function Cart ({items = [], removeItem, removeAll, setCostArray, costArray, setC
                         <div>
                             <p>Estimated Pickup Time: {deliTime} minutes</p>
                             <p>What store you picking up from</p>
-                            <select onChange={(e) => console.log(e.target.value)}>
+                            <select onChange={(e) => (e.target.value)}>
                                 <option value="">Please Select a Location</option>
                                 <option value="Location Moon">The Moon</option>
                                 <option value="Location The Deep Beyond">The Deep Beyond</option>
@@ -133,8 +160,9 @@ function Cart ({items = [], removeItem, removeAll, setCostArray, costArray, setC
             {cost > 0 ? <p>Total: ${cost}</p> : <p>No items in cart</p>}
         </div>
         
-        <div className='purchase'>
-            <button onClick={purchaseButton} disabled={!triggerPayment || !triggerDeli } >Purchase</button>
+        <div className="purchase">
+            {error && <p className="error">{error}</p>}
+            <button onClick={purchaseButton} disabled={!triggerPayment || !triggerDeli}>Purchase</button>
         </div>
     </div>
     );

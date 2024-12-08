@@ -1,31 +1,15 @@
-import mongoose from "mongoose";
-//Will set all the required fields to true right now most of them are false so i can test on postman
-//Hello
+// models/Order.js
+import mongoose from 'mongoose';
+
 const orderSchema = new mongoose.Schema({
-  customerName: {
-    type: String,
-    requied: true,
-  },
-  phoneNumber: {
-    type: Number,
-    required: true,
-  },
-  menuItem: {
-    type: String,
-    required: false,
-  },
-  size: {
-    type: String,
-    required: false,
-  },
-  deliveryMethod: {
-    type: String,
-    required: false,
-  },
-  paymentMethod: {
-    type: String,
-    required: false,
-  },
+    username: { type: String, required: true },
+    items: { type: [String], required: true }, // Array of item names
+    deliveryType: { type: String, required: true },
+    paymentType: { type: String, required: true },
+    totalCost: { type: Number, required: true },
+    createdAt: { type: Date, default: Date.now }
 });
-const Order = mongoose.model("Order", orderSchema);
+
+const Order = mongoose.model('Order', orderSchema);
+
 export default Order;
