@@ -8,8 +8,10 @@ dotenv.config();
 
 import Order from './models/Order.js';
 
+console.log(process.env);
+
 const app = express();
-const PORT = process.env.CONNECTION_PORT;
+const CONNECTION_PORT = process.env.PORT;
 
 // Middleware setup
 app.use(cors());
@@ -31,8 +33,8 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 // Connection Check
-app.listen(PORT, () => {
-  console.log(`Server is running on Port:${PORT}`);
+app.listen(CONNECTION_PORT, () => {
+  console.log(`Server is running on Port:${CONNECTION_PORT}`);
 });
 
 //Starting Login Section
