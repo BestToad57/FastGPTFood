@@ -65,7 +65,7 @@ function Cart ({items = [], removeItem, removeAll, setCostArray, costArray, setC
 
             console.log(username);
 
-            const response = await axios.post("http://localhost:5000/storeOrder", {
+            const response = await axios.post(`${import.meta.env.VITE_Backend_URL}/storeOrder`, {
                 username,
                 items,
                 deliveryType: typeOrder,
