@@ -6,19 +6,14 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
 
-import Order from './models/Order.js'; // Updated import
+import Order from './models/Order.js';
 
 const app = express();
-// const PORT = process.env.CONNECTION_PORT;
-const PORT = 5000;
+const PORT = process.env.CONNECTION_PORT;
 
 // Middleware setup
+app.use(cors());
 app.use(express.json());
-app.use(cors({
-    origin: 'http://localhost:5173', // Replace Render URL
-    methods: ['GET', 'POST'],
-    credentials: true,
-}));
 
 const SECRET_KEY = process.env.SECRET_KEY;
 
@@ -72,7 +67,6 @@ app.post('/login', async (req, res) => {
 //Checks first: if the user has signed up; 
 //second: checks if the password is the same as the the account
 //third: allows the user in depeneded on the requirements
-
 app.post('/signup', async (req, res) => {
     try {
         const {username, password} = req.body;

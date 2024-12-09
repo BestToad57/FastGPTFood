@@ -15,9 +15,7 @@ const UserPage = () => {
     useEffect(() => {
         const fetchRecentPurchases = async () => {
             try {
-                console.log('Fetching recent purchases for:', username);
                 const response = await axios.get(`http://localhost:5000/getOrders/${username}`); // Use the full URL to avoid issues
-                console.log('Response data:', response.data);
     
                 if (response.data && Array.isArray(response.data.orders)) {
                     setRecentPurchases(response.data.orders);
