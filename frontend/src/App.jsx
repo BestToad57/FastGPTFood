@@ -51,11 +51,6 @@ function App() {
     setItems([]);
   }
 
-  const [rememberUserName, setRememberUserName] = useState('');
-  const rememberUserNameFunction = (username) => {
-    setRememberUserName = username;
-  }
-
   return (
     <Router>
       <div>
