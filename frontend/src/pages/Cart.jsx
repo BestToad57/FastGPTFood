@@ -93,76 +93,80 @@ function Cart ({items = [], removeItem, removeAll, setCostArray, costArray, setC
         <header>
             <Navigation />
         </header>
-        
-        <div className='ItemsInCart'>
-            <h2>Remove Items from Cart</h2>
-            {items.length === 0 ? (
-                <p>cart is empty</p>
-            ) : (
-                <div className="orderItems">
-                    {items.map((item, index) => (
-                        <span key={index}>
-                            {item} <button onClick={() => removeItem(index)}>  X  </button>
-                        </span>
-                    ))}
+
+        <div className='BackgroundRegtangle'>
+            <div>
+                <div className='ItemsInCart'>
+                    <h2>Remove Items from Cart</h2>
+                    {items.length === 0 ? (
+                        <p>cart is empty</p>
+                    ) : (
+                        <div className="orderItems">
+                            {items.map((item, index) => (
+                                <span key={index}>
+                                    {item} <button onClick={() => removeItem(index)}>  X  </button>
+                                </span>
+                            ))}
+                        </div>
+                    )}
                 </div>
-            )}
-        </div>
 
-        <div className='DeliveryType'>
-            <h3>Delivery</h3>
-            <button onClick={homeDeliButton}>Drop-Off Delivery</button>
-            <button onClick={inPersonDeliButton}>In-Person Pick Up</button>
-            {typeOrder === "" ? (
-                <h4>Delivery: </h4>
-            ) : (
-                <div>
-                    <h4>Delivery: {typeOrder}</h4>
-                    {typeOrder === "Drop-Off Delivery" ? (
+                <div className='DeliveryType'>
+                    <h3>Delivery</h3>
+                    <button onClick={homeDeliButton}>Drop-Off Delivery</button>
+                    <button onClick={inPersonDeliButton}>In-Person Pick Up</button>
+                    {typeOrder === "" ? (
+                        <h4>Delivery: </h4>
+                    ) : (
                         <div>
-                            <p>Estimated Delivery Time: {deliTime} minutes</p>
-                            <p>Your home location?</p>
-                            <input type='text' placeholder='help' />
+                            <h4>Delivery: {typeOrder}</h4>
+                            {typeOrder === "Drop-Off Delivery" ? (
+                                <div>
+                                    <p>Estimated Delivery Time: {deliTime} minutes</p>
+                                    <p>Your home location?</p>
+                                    <input type='text' placeholder='help' />
 
+                                </div>
+                            ) : (
+                                <div>
+                                    <p>Estimated Pickup Time: {deliTime} minutes</p>
+                                    <p>What store you picking up from</p>
+                                    <select onChange={(e) => (e.target.value)}>
+                                        <option value="">Please Select a Location</option>
+                                        <option value="Location Moon">The Moon</option>
+                                        <option value="Location The Deep Beyond">The Deep Beyond</option>
+                                        <option value="Location 284 Progress Avn">284 Progress Avn</option>
+                                    </select>
+                                </div>
+                            )}
+                            </div>
+                        )}
+                </div>
+
+                <div className='paymentCards'> 
+                    <button onClick={paypalButton}>Pay Pal</button>
+                    <button onClick={visaButton}>Visa</button>
+                    <button onClick={masterCardButton}>Master Card</button>
+                    {typePay === "" ? (
+                        <div>
+                            <h3>No Payment type has been chosen</h3>
                         </div>
                     ) : (
                         <div>
-                            <p>Estimated Pickup Time: {deliTime} minutes</p>
-                            <p>What store you picking up from</p>
-                            <select onChange={(e) => (e.target.value)}>
-                                <option value="">Please Select a Location</option>
-                                <option value="Location Moon">The Moon</option>
-                                <option value="Location The Deep Beyond">The Deep Beyond</option>
-                                <option value="Location 284 Progress Avn">284 Progress Avn</option>
-                            </select>
+                            <h3>Payment: {typePay}</h3>
                         </div>
                     )}
-                    </div>
-                )}
-        </div>
-
-        <div className='paymentCards'> 
-            <button onClick={paypalButton}>Pay Pal</button>
-            <button onClick={visaButton}>Visa</button>
-            <button onClick={masterCardButton}>Master Card</button>
-            {typePay === "" ? (
-                <div>
-                    <h3>No Payment type has been chosen</h3>
                 </div>
-            ) : (
-                <div>
-                    <h3>Payment: {typePay}</h3>
+                
+                <div className='costOverall'>
+                    {cost > 0 ? <p>Total: ${cost}</p> : <p>No items in cart</p>}
                 </div>
-            )}
-        </div>
-        
-        <div className='costOverall'>
-            {cost > 0 ? <p>Total: ${cost}</p> : <p>No items in cart</p>}
-        </div>
-        
-        <div className="purchase">
-            {error && <p className="error">{error}</p>}
-            <button onClick={purchaseButton} disabled={!triggerPayment || !triggerDeli}>Purchase</button>
+                
+                <div className="purchase">
+                    {error && <p className="error">{error}</p>}
+                    <button onClick={purchaseButton} disabled={!triggerPayment || !triggerDeli}>Purchase</button>
+                </div>
+            </div>
         </div>
     </div>
     );

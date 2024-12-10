@@ -18,43 +18,45 @@ function Contact() {
           <Navigation />
         </header>
 
-        <h1>Contact Us!</h1>
-        <main>
-          <div className='leftSection'>
-            <div className="feedback">
-              <img src={feedbackImg} alt="Feedback" />
-              <div>
-                <h2>Send Feedback</h2>
-                <p>Share your thoughts</p>
+        <div className='BackgroundRegtangle'>
+          <h1>Contact Us!</h1>
+          <main>
+            <div className='leftSection'>
+              <div className="feedback">
+                <img src={feedbackImg} alt="Feedback" />
+                <div>
+                  <h2>Send Feedback</h2>
+                  <p>Share your thoughts</p>
+                </div>
+              </div>
+
+              <div className="customerService">
+                <img src={customerSupportImg} alt="Customer Service" />
+                <div>
+                  <h2>Contact Customer Service</h2>
+                  <p>Want customer service</p>
+                </div>
               </div>
             </div>
 
-            <div className="customerService">
-              <img src={customerSupportImg} alt="Customer Service" />
-               <div>
-                <h2>Contact Customer Service</h2>
-                <p>Want customer service</p>
+            <div className='rightSection'>
+              <div className="phone">
+                <img src={phone} alt='this would be the phone' />
+                <span>phone number</span>
+              </div>
+
+              <div className="email">
+                <img src={email} alt='this would be email' />
+                <span>contact email</span>
+              </div>
+
+              <div className="physicalLocation">
+                <img src={location} alt='this would be the main headquaters' />
+                <span>IRL location</span>
               </div>
             </div>
-          </div>
-
-          <div className='rightSection'>
-            <div className="phone">
-              <img src={phone} alt='this would be the phone' />
-              <span>phone number</span>
-            </div>
-
-            <div className="email">
-              <img src={email} alt='this would be email' />
-              <span>contact email</span>
-            </div>
-
-            <div className="physicalLocation">
-              <img src={location} alt='this would be the main headquaters' />
-              <span>IRL location</span>
-            </div>
-          </div>
-        </main>  
+          </main>  
+        </div>
       </div>
     );
 }

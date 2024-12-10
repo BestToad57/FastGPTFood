@@ -175,40 +175,40 @@ function Order({ addItem, setCostArray, setCost }) {
         <div>
             <header>
                 <Navigation />
-            </header>
+            </header>    
 
             <div>
-                {timerTriggerText && (
-                    <div>
-                        <p>{addedText}</p>
-                    </div>
-                )}
+                <div className='BackgroundRegtangle'>
+                    {timerTriggerText && (
+                        <div>
+                            <p>{addedText}</p>
+                        </div>
+                    )}
+                </div>
+                <div>
+                    {currentState === "menu" && (
+                        <div>
+                            <MenuView menuItems={menuItems} functionIntentionalAdd={intentionalAdd} />
+                        </div>   
+                    )}
+
+                    {currentState === "size" && (
+                        <div>
+                            <SizeView sizeItems={sizeItems} functionSizeAdd={sizeAdd} />
+                        </div>
+                    )}
+
+                    {currentState === "toppings" && (
+                        <div>
+                            <ToppingsView menuToppings={menuToppings} functionToppingsAdd={toppingsAdd} toppingsFinalPush={toppingsFinalPush}/>
+                        </div>
+                    )}
+                </div>
+
+                <div>
+                    <CartButton />
+                </div>
             </div>
-
-            <div>
-                {currentState === "menu" && (
-                    <div>
-                        <MenuView menuItems={menuItems} functionIntentionalAdd={intentionalAdd} />
-                    </div>   
-                )}
-
-                {currentState === "size" && (
-                    <div>
-                        <SizeView sizeItems={sizeItems} functionSizeAdd={sizeAdd} />
-                    </div>
-                )}
-
-                {currentState === "toppings" && (
-                    <div>
-                        <ToppingsView menuToppings={menuToppings} functionToppingsAdd={toppingsAdd} toppingsFinalPush={toppingsFinalPush}/>
-                    </div>
-                )}
-            </div>
-
-            <div>
-                <CartButton />
-            </div>
-
         </div>
     );
 }
