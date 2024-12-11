@@ -218,7 +218,7 @@ function Order({ addItem, setCostArray, setCost }) {
 const MenuView = ({ menuItems, functionIntentionalAdd }) => {
     return (
         <div>
-            <h4>Menu</h4>
+            <h4 className='MoveItDown'>Menu</h4>
             <p>Please select an item on the menu</p>
             
             <div className="menuSection">
