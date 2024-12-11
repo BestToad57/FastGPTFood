@@ -177,7 +177,7 @@ function Order({ addItem, setCostArray, setCost }) {
                 <Navigation />
             </header>    
 
-            <div className='BackgroundRegtangle'>
+            <div>
                 <div>
                     {timerTriggerText && (
                         <div>
