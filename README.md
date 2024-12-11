@@ -8,7 +8,7 @@ Welcome to **FastGPTFood**, a website which was created in the mind of using a C
 - **Online Ordering**: Customize your order and schedule delivery or pickup.
 - **See Past Purchaes**: Login in your own User Account and see any of your past purchases.
 
-### What Powers FastGPTFood
+# What Powers FastGPTFood
 - **Frontend**: HTML, CSS, React
 - **Backend**: Node.js, Express
 - **Database**: MongoDB
