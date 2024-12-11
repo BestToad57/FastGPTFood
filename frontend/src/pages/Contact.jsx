@@ -18,8 +18,8 @@ function Contact() {
           <Navigation />
         </header>
 
+        <h1>Contact Us!</h1>
         <div className='BackgroundRegtangle'>
-          <h1>Contact Us!</h1>
           <main>
             <div className='leftSection'>
               <div className="feedback">

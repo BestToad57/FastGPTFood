@@ -30,7 +30,7 @@ function About () {
                         <img src={founder2} />
                         <img src={founder3} />
                     </div>
-                    <p>
+                    <p className='BackgroundRegtangle'>
                         Our core founders of BestToad57, UyphengChou and ishamotwani has created this the FastGPTFood company in high hopes to help change the world with it's high quality food and its world breaking technology. 
                     </p>
                 </div>
