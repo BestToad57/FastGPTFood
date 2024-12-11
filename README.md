@@ -38,3 +38,9 @@ Welcome to **FastGPTFood**, a website which was created in the mind of using a C
 
 	cd FrontEnd
 	Npm run dev
+
+ # Screenshots
+
+![Screenshot 2024-12-10 192038](https://github.com/user-attachments/assets/79709c38-c203-4142-847d-3cdc25029d7f)
+![Screenshot 2024-12-10 192128](https://github.com/user-attachments/assets/f26d0c4a-7e87-4adf-9b8c-276353041ebd)
+![Screenshot 2024-12-10 192234](https://github.com/user-attachments/assets/d60dba52-5815-4676-95ac-2d5fda905da6)
