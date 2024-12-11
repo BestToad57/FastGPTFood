@@ -16,7 +16,7 @@ function About () {
                 <Navigation />
             </header>
             
-            <div className='BackgroundRegtangle'>
+            <div className='BackgroundCirc'>
                 <main className='missionsBelief'>
                     <h2>Our Mission and Beliefs</h2>
                     <img src={missionsBelief} alt='our missions and belief' className='ourBeliefImg' />

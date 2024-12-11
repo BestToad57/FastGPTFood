@@ -19,7 +19,7 @@ function Contact() {
         </header>
 
         <h1>Contact Us!</h1>
-        <div className='BackgroundRegtangle'>
+        <div className='BackgroundReg'>
           <main>
             <div className='leftSection'>
               <div className="feedback">

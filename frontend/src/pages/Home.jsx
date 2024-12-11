@@ -30,7 +30,7 @@ function Home() {
             <Navigation />
           </header>
 
-          <div className='BackgroundRegtangle'>
+          <div className='BackgroundSqu'>
             <div className='specialImgSection'>
               <img src={GSDDB} alt='Special Meal' className='orderImg' />
               <div className='imgContent'>
